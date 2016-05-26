@@ -1,0 +1,21 @@
+#login {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+  #login .scroll-content {
+    display: table !important;
+    width: 100% !important;
+    height: 100% !important; }
+    #login .scroll-content form {
+      display: table-cell;
+      vertical-align: middle; }
+      #login .scroll-content form .header {
+        padding-bottom: 20px; }
+        #login .scroll-content form .header img {
+          display: block;
+          width: 80%;
+          margin: 0 auto; }
+      #login .scroll-content form .button.button-light.active, #login .scroll-content form .button.button-light.activated {
+        color: #fff;
+        opacity: inherit; }

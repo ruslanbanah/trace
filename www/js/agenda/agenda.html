@@ -1,0 +1,28 @@
+<ion-view view-title="Agenda">
+  <ion-content>
+    <div class="card">
+      <div class="item item-dark">
+        <span class="col-33">START YOUR WORK DAY</span>
+        <button class="button button-large button-light" ng-click="start()">START</button>
+      </div>
+      <div class="item item-image">
+        <img src="img/u127.png">
+      </div>
+      <div class="item item-text-wrap">
+        <p>{{lat}} : {{long}}</p>
+        Work order #23425
+        From: Empire State Building
+        To: Freedom Tower
+        Time: 14:00
+      </div>
+      <div class="item item-divider">
+          <button class="button button-clear button-positive item-button-left">
+            DECLINE
+          </button>
+          <button class="button button-clear button-positive item-button-right">
+            ACCEPT
+          </button>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
