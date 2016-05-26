@@ -1,6 +1,6 @@
 AppControllers.controller('loginCtrl', function($scope, $state, $ionicPopup, AuthService, ConnectivityMonitor){
   $scope.user = {
-    email: 'support@gofleet.ca',
+    login: 'support@gofleet.ca',
     password: '"18889981122##"'
   };
 
@@ -13,5 +13,6 @@ AppControllers.controller('loginCtrl', function($scope, $state, $ionicPopup, Aut
         template: error.message || 'Unknow error.'
       });
     });
+
   };
 });

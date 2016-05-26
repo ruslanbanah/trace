@@ -1,25 +1,28 @@
-App.factory('AuthService', function(AUTH_URL, $timeout, $rootScope, $http, $q, $ionicLoading) {
+App.factory('GpsService', function(GPS_URL, $timeout, $rootScope, $http, $q) {
   var securityToken = null;
 
   return {
-    login: function(userName, password, database) {
-      var data = {
-              "username": userName,
-              "password": password
-      },
+    send: function(params) {
+      var data =  {
+          "login": "driver1@email.com",
+          "speed" : 180,
+          "latitude" : 48.8382600,
+          "longitude": 24.0232400,
+          "dateTime" : "2016-05-26T13:12:11.000Z",
+          "is_working": 0
+        },
           def = $q.defer();
-      $ionicLoading.show({
-        content: 'Loading',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 200,
-        showDelay: 0
-      });
+      angular.extend(data, params);
+      console.log(data);
 
       $http({
-        url: AUTH_URL,
-        params: data,
-        method: 'GET'
+        url: GPS_URL,
+        method: 'POST',
+        data: data,
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        }
       }).success(function(responseData) {
         if (responseData.error) {
           def.reject(responseData.error);
@@ -27,11 +30,9 @@ App.factory('AuthService', function(AUTH_URL, $timeout, $rootScope, $http, $q, $
           securityToken = responseData.result.securityToken;
           securityToken.serialNumber = 'C69E0001B211'; //ToDo: this serial number must be returned from the server
           def.resolve(securityToken);
-          $ionicLoading.hide();
         }
       ).error(function(error) {
         def.reject(error);
-        $ionicLoading.hide();
       });
 
       return def.promise;
@@ -46,7 +47,7 @@ App.factory('AuthService', function(AUTH_URL, $timeout, $rootScope, $http, $q, $
     },
 
     isAuthenticated: function() {
-      return true;
+      return securityToken;
     }
   }
 });

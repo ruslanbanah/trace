@@ -3,7 +3,8 @@
     <div class="card">
       <div class="item item-dark">
         <span class="col-33">START YOUR WORK DAY</span>
-        <button class="button button-large button-light" ng-click="start()">START</button>
+        <button class="button button-large button-light" ng-hide="isStart" ng-click="start()">START</button>
+        <button class="button button-large button-light" ng-show="isStart" ng-click="stop()">STOP</button>
       </div>
       <div class="item item-image">
         <img src="img/u127.png">
